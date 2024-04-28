@@ -5,9 +5,9 @@
       </a>
 
       <ul class="nav nav-pills">
-        <li class="nav-item"><span class="nav-link active" aria-current="page" (click)="navigateHome()">Home</span></li>
-        <li class="nav-item"><span class="nav-link" (click)="navigateWeather()">Weather</span></li>
-        <li class="nav-item"><span class="nav-link">About</span></li>
+        <li role="button" class="nav-item"><span class="nav-link" aria-current="page" (click)="navigateHome($event)">Home</span></li>
+        <li role="button" class="nav-item"><span class="nav-link" (click)="navigateWeather($event)">Weather</span></li>
+        <li role="button" class="nav-item"><span class="nav-link">About</span></li>
       </ul>
     </header>
   </div>

@@ -1,4 +1,12 @@
 <div class="container">
+    <div *ngIf="message.type === 'success'" class="alert alert-success" role="alert">
+        {{ message.msg }}
+        <span role="button" aria-hidden="true" (click)="clearMessage()"><i class="fa-solid fa-xmark"></i></span>
+    </div>
+    <div *ngIf="message.type === 'error'" class="alert alert-danger" role="alert">
+        {{ message.msg }}
+        <span role="button" aria-hidden="true" (click)="clearMessage()"><i class="fa-solid fa-xmark"></i></span>
+            </div>
     <h2>Current Weather</h2>
     <div *ngIf="weatherData">
       <p>City: {{ weatherData.name }}</p>
