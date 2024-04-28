@@ -1,8 +1,23 @@
-<button class="btn btn-info" (click)="getWeather()">Get Weather</button>
-
-<input type="text" placeholder="City" [(ngModel)]="city">
-
-
-<div *ngIf="weather">
-    <h1>{{weather.name}}</h1>
-</div>
+<div class="container">
+    <h2>Current Weather</h2>
+    <div *ngIf="weatherData">
+      <p>City: {{ weatherData.name }}</p>
+      <p>Temperature: {{ weatherData.main.temp }} °C</p>
+      <p>Weather: {{ weatherData.weather[0].main }}</p>
+      <p>Description: {{ weatherData.weather[0].description }}</p>
+    </div>
+  
+    <hr>
+  
+    <h2>Search Weather by City</h2>
+    <input type="text" [(ngModel)]="city" placeholder="Enter city name">
+    <button (click)="getWeatherByCity()">Search</button>
+  
+    <div *ngIf="weatherData">
+      <p>City: {{ weatherData.name }}</p>
+      <p>Temperature: {{ weatherData.main.temp }} °C</p>
+      <p>Weather: {{ weatherData.weather[0].main }}</p>
+      <p>Description: {{ weatherData.weather[0].description }}</p>
+    </div>
+  </div>
+  
