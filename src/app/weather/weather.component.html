@@ -8,9 +8,10 @@
         <span role="button" aria-hidden="true" (click)="clearMessage()"><i class="fa-solid fa-xmark"></i></span>
             </div>
     <h2>Current Weather</h2>
+    <app-loader></app-loader>
     <div *ngIf="weatherData">
       <p>City: {{ weatherData.name }}</p>
-      <p>Temperature: {{ weatherData.main.temp }} °C</p>
+      <p>Temperature: {{ weatherData.main.temp - 273.15 }} °C</p>
       <p>Weather: {{ weatherData.weather[0].main }}</p>
       <p>Description: {{ weatherData.weather[0].description }}</p>
     </div>
@@ -23,7 +24,7 @@
   
     <div *ngIf="weatherData">
       <p>City: {{ weatherData.name }}</p>
-      <p>Temperature: {{ weatherData.main.temp }} °C</p>
+      <p>Temperature: {{ weatherData.main.temp - 273.15 }} °C</p>
       <p>Weather: {{ weatherData.weather[0].main }}</p>
       <p>Description: {{ weatherData.weather[0].description }}</p>
     </div>

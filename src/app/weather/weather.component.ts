@@ -2,12 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { WeatherApiService } from '../service/weather-api.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { LoaderComponent } from '../loader/loader.component';
 
 type MessageType = {type: 'success' | 'error' | 'default', msg: string};
 @Component({
   selector: 'app-weather',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, LoaderComponent],
   templateUrl: './weather.component.html',
   styleUrl: './weather.component.css'
 })
@@ -44,6 +45,7 @@ export class WeatherComponent implements OnInit {
       console.error('Geolocation is not supported by this browser.');
     }
   }
+  
   getWeatherByCity() {
     if (this.city.trim() === '') {
       alert('Please enter a city name.');
