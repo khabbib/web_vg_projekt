@@ -2,13 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { WeatherApiService } from '../service/weather-api.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { LoaderComponent } from '../loader/loader.component';
 
 type MessageType = {type: 'success' | 'error' | 'default', msg: string};
 @Component({
   selector: 'app-weather',
   standalone: true,
-  imports: [FormsModule, CommonModule, LoaderComponent],
+  imports: [FormsModule, CommonModule],
   templateUrl: './weather.component.html',
   styleUrl: './weather.component.css'
 })
@@ -17,6 +16,8 @@ export class WeatherComponent implements OnInit {
   weatherDataByCity: any;
   city: string = '';
   message: MessageType = {type: "default", msg: ""};
+  isLoading: boolean = false;
+  isErrorMessage: boolean = false;
   constructor(private weatherApiService: WeatherApiService) {}
 
   ngOnInit(): void {
@@ -49,25 +50,32 @@ export class WeatherComponent implements OnInit {
     }
   }
   getCurrentLocationWeather() {
+    this.isLoading = true;
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(position => {
         const latitude = position.coords.latitude;
         const longitude = position.coords.longitude;
         this.weatherApiService.getWeatherByLocation(latitude, longitude)
         .then(response => {
+          this.isErrorMessage = true;
+          this.isLoading = false;
           this.weatherData = response.data;
           this.message = {type: "success", msg: `Weather for ${response.data.name}`}
           console.log(this.weatherData);
+          this.clearMessage();
         })
         .catch(error => {
+          this.isErrorMessage = true;
           this.message = {type: "error", msg: `Weather for ${error}`}
           console.error('Error fetching weather data:', error);
         });
       }, error => {
+        this.isErrorMessage = true;
         this.message = {type: "error", msg: `Error getting location: ${error}`}
         console.error('Error getting location:', error);
       });
     } else {
+      this.isErrorMessage = true;
       this.message = {type: "error", msg: `Geolocation is not supported by this browser.`}
       console.error('Geolocation is not supported by this browser.');
     }
@@ -107,6 +115,9 @@ export class WeatherComponent implements OnInit {
   }
 
   clearMessage() {
-    this.message = { type: 'default', msg: '' };
+    setTimeout(() => {
+      this.message = { type: 'default', msg: '' };
+      this.isErrorMessage = false;
+    }, 5000);
   }
 }

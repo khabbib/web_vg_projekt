@@ -1,6 +1,6 @@
 import { AfterViewInit, Component } from '@angular/core';
+import anime from 'animejs';
 
-declare var anime: any;
 
 @Component({
   selector: 'app-loader',

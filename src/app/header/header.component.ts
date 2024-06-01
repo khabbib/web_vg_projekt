@@ -37,6 +37,11 @@ export class HeaderComponent implements OnInit {
     this.#setActiveLink();
     this.router.navigate(["weather"]);
   }
+  navigateAbout(e: MouseEvent) {
+    this.active = "About";
+    this.#setActiveLink();
+    this.router.navigate(["about"]);
+  }
   #setActiveLink(){
     const navItems = document.querySelectorAll('.nav-link'); 
     navItems.forEach(item => {

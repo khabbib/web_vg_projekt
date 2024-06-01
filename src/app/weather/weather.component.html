@@ -1,25 +1,28 @@
 <div class="container">
   
   <!-- Alert Messages -->
-  <div *ngIf="message.type === 'success'" class="alert alert-success" role="alert">
-    {{ message.msg }}
-    <span role="button" aria-hidden="true" (click)="clearMessage()"><i class="fa-solid fa-xmark"></i></span>
-  </div>
+  <div *ngIf="isErrorMessage">
+
+    <div *ngIf="message.type === 'success'" class="alert alert-success" role="alert">
+      {{ message.msg }}
+      <span role="button" aria-hidden="true" (click)="clearMessage()"><i class="fa-solid fa-xmark"></i></span>
+    </div>
     <div *ngIf="message.type === 'error'" class="alert alert-danger" role="alert">
       {{ message.msg }}
       <span role="button" aria-hidden="true" (click)="clearMessage()"><i class="fa-solid fa-xmark"></i></span>
     </div>
-    
-    <!-- <app-loader></app-loader> -->
+  </div>
   <div class="container devider">
-    <div>
+    <div class="card-custom">
       <!-- Current Weather -->
+      
       <h2>Get current weather</h2>
       <label for="donationAmount"
     >Get the current weather:</label
     >
       <button type="button" class="btn btn-primary" (click)="getCurrentLocationWeather()">Get weather</button>
-      
+     
+      <div *ngIf="isLoading" class="loader"></div>
       <div *ngIf="weatherData" class="weather-info">
         <hr>
         <h4 >Current Weather in {{weatherData.name}}</h4>
@@ -34,7 +37,7 @@
       
     </div>
     
-    <div>
+    <div class="card-custom">
     
     <!-- Search Weather by City -->
     <h2>Search Weather by City</h2>
