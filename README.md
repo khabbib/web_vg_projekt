@@ -9,6 +9,14 @@ Welcome to Weather Now, a web application that provides real-time weather update
 - **City Search:** Easily search for weather updates in any city.
 - **Responsive Design:** Enjoy a seamless experience on both desktop and mobile devices.
 
+## Teck stack
+
+- **Angular:**  
+- **Anime.js** 
+- **Chart.js** 
+- **Fontawesome** 
+- **Bootstrap**
+
 ## Getting Started
 
 Follow these simple steps to set up and run the Weather Now application on your local machine.
