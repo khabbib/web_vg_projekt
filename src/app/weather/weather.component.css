@@ -5,3 +5,18 @@
     display: flex;
     justify-content: space-between;
 }
+
+button {
+    margin-top: 0.5rem;
+    /* margin-bottom: 0.5rem; */
+}
+
+.devider {
+    display: flex;
+    justify-content: space-between;
+}
+
+.devider div {
+    display: flex;
+    flex-direction: column;
+}

@@ -1,32 +1,66 @@
 <div class="container">
-    <div *ngIf="message.type === 'success'" class="alert alert-success" role="alert">
-        {{ message.msg }}
-        <span role="button" aria-hidden="true" (click)="clearMessage()"><i class="fa-solid fa-xmark"></i></span>
-    </div>
-    <div *ngIf="message.type === 'error'" class="alert alert-danger" role="alert">
-        {{ message.msg }}
-        <span role="button" aria-hidden="true" (click)="clearMessage()"><i class="fa-solid fa-xmark"></i></span>
-            </div>
-    <h2>Current Weather</h2>
-    <app-loader></app-loader>
-    <div *ngIf="weatherData">
-      <p>City: {{ weatherData.name }}</p>
-      <p>Temperature: {{ weatherData.main.temp - 273.15 }} °C</p>
-      <p>Weather: {{ weatherData.weather[0].main }}</p>
-      <p>Description: {{ weatherData.weather[0].description }}</p>
-    </div>
   
-    <hr>
-  
-    <h2>Search Weather by City</h2>
-    <input type="text" [(ngModel)]="city" placeholder="Enter city name">
-    <button (click)="getWeatherByCity()">Search</button>
-  
-    <div *ngIf="weatherData">
-      <p>City: {{ weatherData.name }}</p>
-      <p>Temperature: {{ weatherData.main.temp - 273.15 }} °C</p>
-      <p>Weather: {{ weatherData.weather[0].main }}</p>
-      <p>Description: {{ weatherData.weather[0].description }}</p>
-    </div>
+  <!-- Alert Messages -->
+  <div *ngIf="message.type === 'success'" class="alert alert-success" role="alert">
+    {{ message.msg }}
+    <span role="button" aria-hidden="true" (click)="clearMessage()"><i class="fa-solid fa-xmark"></i></span>
   </div>
-  
+    <div *ngIf="message.type === 'error'" class="alert alert-danger" role="alert">
+      {{ message.msg }}
+      <span role="button" aria-hidden="true" (click)="clearMessage()"><i class="fa-solid fa-xmark"></i></span>
+    </div>
+    
+    <!-- <app-loader></app-loader> -->
+  <div class="container devider">
+    <div>
+      <!-- Current Weather -->
+      <h2>Get current weather</h2>
+      <label for="donationAmount"
+    >Get the current weather:</label
+    >
+      <button type="button" class="btn btn-primary" (click)="getCurrentLocationWeather()">Get weather</button>
+      
+      <div *ngIf="weatherData" class="weather-info">
+        <hr>
+        <h4 >Current Weather in {{weatherData.name}}</h4>
+        <p><i class="fa-solid fa-city"></i> {{ weatherData.name }}</p>
+        <p><i class="fa-solid fa-thermometer-half"></i> {{ (weatherData.main.temp - 273.15) | number:'1.0-1' }} °C</p>
+        <p>
+          <i [ngClass]="getWeatherIcon(weatherData.weather[0].main)"></i> 
+          {{ weatherData.weather[0].main }}
+        </p>
+        <p><i class="fa-solid fa-cloud"></i> {{ weatherData.weather[0].description }}</p>
+      </div>
+      
+    </div>
+    
+    <div>
+    
+    <!-- Search Weather by City -->
+    <h2>Search Weather by City</h2>
+    <label style="padding: 1rem 0" for="donationAmount"
+    >Enter the name of city:</label
+    >
+    <input
+    type="text"
+    class="form-control"
+    placeholder="Enter city name"
+              [(ngModel)]="city"
+              min="1"
+              />
+              <button type="button" class="btn btn-primary" (click)="getWeatherByCity()">Search</button>
+              
+              <div *ngIf="weatherDataByCity" class="weather-info">
+                <hr>
+                <p><i class="fa-solid fa-city"></i> City: {{ weatherDataByCity.name }}</p>
+                <p><i class="fa-solid fa-thermometer-half"></i> Temperature: {{ (weatherDataByCity.main.temp - 273.15) | number:'1.0-1' }} °C</p>
+                <p>
+                  <i [ngClass]="getWeatherIcon(weatherDataByCity.weather[0].main)"></i> 
+                  Weather: {{ weatherDataByCity.weather[0].main }}
+                </p>
+                <p><i class="fa-solid fa-cloud"></i> Description: {{ weatherDataByCity.weather[0].description }}</p>
+              </div>
+            </div>
+            </div>
+          </div>
+            

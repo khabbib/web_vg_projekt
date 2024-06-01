@@ -13,6 +13,12 @@ export class WeatherApiService {
     const apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${this.#apiKey}`;
     return axios.get(apiUrl);
   }
+
+  getFourDaysWeatherByLocation(lat: number, lon: number) {
+    // const apiUrl = `https://pro.openweathermap.org/data/2.5/forecast/hourly?lat=${lat}&lon=${lon}&appid=${this.#apiKey}`;
+    const apiUrl = `https://pro.openweathermap.org/data/2.5/forecast/hourly?lat=${lat}&lon=${lon}&appid=${this.#apiKey}`;
+    return axios.get(apiUrl);
+  }
   
   getWeatherData(city: string) {
     const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${this.#apiKey}`;
