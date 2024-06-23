@@ -15,7 +15,7 @@ export class LoaderComponent implements AfterViewInit{
 const textWrapper = document.querySelector('.an-1') as Element;
 textWrapper.innerHTML = textWrapper.innerHTML.replace(/\S/g, "<span class='letter'>$&</span>");
 
-anime.timeline({loop: true})
+anime.timeline({loop: false})
 .add({
   targets: '.an-1 .letter',
   scale: [4,1],
@@ -24,13 +24,7 @@ anime.timeline({loop: true})
   easing: "easeOutExpo",
   duration: 950,
   delay: (_el: any, i: number) => 70*i
-}).add({
-  targets: '.an-1',
-  opacity: 0,
-  duration: 1000,
-  easing: "easeOutExpo",
-  delay: 1000
-});
+})
 
 
 }
