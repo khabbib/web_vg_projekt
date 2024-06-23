@@ -55,13 +55,13 @@
               
               <div *ngIf="weatherDataByCity" class="weather-info">
                 <hr>
-                <p><i class="fa-solid fa-city"></i> City: {{ weatherDataByCity.name }}</p>
-                <p><i class="fa-solid fa-thermometer-half"></i> Temperature: {{ (weatherDataByCity.main.temp - 273.15) | number:'1.0-1' }} °C</p>
+                <p><i class="fa-solid fa-city"></i> {{ weatherDataByCity.name }}</p>
+                <p><i class="fa-solid fa-thermometer-half"></i> {{ (weatherDataByCity.main.temp - 273.15) | number:'1.0-1' }} °C</p>
                 <p>
                   <i [ngClass]="getWeatherIcon(weatherDataByCity.weather[0].main)"></i> 
-                  Weather: {{ weatherDataByCity.weather[0].main }}
+                   {{ weatherDataByCity.weather[0].main }}
                 </p>
-                <p><i class="fa-solid fa-cloud"></i> Description: {{ weatherDataByCity.weather[0].description }}</p>
+                <p><i class="fa-solid fa-cloud"></i> {{ weatherDataByCity.weather[0].description }}</p>
               </div>
             </div>
             </div>
