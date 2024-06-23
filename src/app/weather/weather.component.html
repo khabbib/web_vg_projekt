@@ -1,8 +1,7 @@
 <div class="container">
-  
+
   <!-- Alert Messages -->
   <div *ngIf="isErrorMessage">
-
     <div *ngIf="message.type === 'success'" class="alert alert-success" role="alert">
       {{ message.msg }}
       <span role="button" aria-hidden="true" (click)="clearMessage()"><i class="fa-solid fa-xmark"></i></span>
