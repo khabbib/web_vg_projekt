@@ -6,13 +6,16 @@ body {
     background-color: #f4f4f4;
 }
 
+.space-container {
+    margin-top: 5rem;
+}
+
 .welcome-container {
     max-width: 800px;
     margin: 50px auto;
     padding: 20px;
     background: #fff;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 h1, h2 {
