@@ -20,7 +20,7 @@
       <label for="donationAmount"
     >Get the current weather:</label
     >
-      <button type="button" class="btn btn-primary" (click)="getCurrentLocationWeather()">Get weather</button>
+      <button type="button" class="btn btn-primary check-search" (click)="getCurrentLocationWeather()">Get weather</button>
      
       <div *ngIf="isLoading" class="loader"></div>
       <div *ngIf="weatherData" class="weather-info">
